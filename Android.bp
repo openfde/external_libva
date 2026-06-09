@@ -126,10 +126,10 @@ cc_library_shared {
             cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib64\""],
         },
         arm: {
-            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib/dri\""],
+            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib\""],
         },
         arm64: {
-            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib64/dri\""],
+            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib64\""],
         },
     },
 
