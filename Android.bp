@@ -125,6 +125,12 @@ cc_library_shared {
         x86_64: {
             cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib64\""],
         },
+        arm: {
+            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib/dri\""],
+        },
+        arm64: {
+            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib64/dri\""],
+        },
     },
 
     vendor: true,
