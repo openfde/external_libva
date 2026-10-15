@@ -355,14 +355,23 @@ va_getDriverInitName(char *name, int namelen, int major, int minor)
 
 static char *va_getDriverPath(const char *driver_dir, const char *driver_name)
 {
-    int n = snprintf(0, 0, DRIVER_PATH_STRING, driver_dir, driver_name, DRIVER_EXTENSION);
+    int n = -1;
+    if (strcmp(driver_name, "iHD") && strcmp(driver_name, "i965")) {
+        n = snprintf(0, 0, DRIVER_PATH_STRING, driver_dir, driver_name, DRIVER_EXTENSION);
+    } else {
+        n = snprintf(0, 0, "%s/libgallium_dri.so", driver_dir);
+    }
     if (n < 0)
         return NULL;
     char *driver_path = (char *) malloc(n + 1);
     if (!driver_path)
         return NULL;
-    n = snprintf(driver_path, n + 1, DRIVER_PATH_STRING,
-                 driver_dir, driver_name, DRIVER_EXTENSION);
+    if (strcmp(driver_name, "iHD") && strcmp(driver_name, "i965")) {
+        n = snprintf(driver_path, n + 1, "%s/libgallium_dri.so", driver_dir);
+    } else {
+        n = snprintf(driver_path, n + 1, DRIVER_PATH_STRING,
+                     driver_dir, driver_name, DRIVER_EXTENSION);
+    }
     if (n < 0) {
         free(driver_path);
         return NULL;

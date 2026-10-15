@@ -72,12 +72,6 @@ cc_library_headers {
     ],
 
     vendor: true,
-    enabled: false,
-    arch: {
-        x86_64: {
-            enabled: true,
-        },
-    },
 }
 
 cc_library_shared {
@@ -129,10 +123,15 @@ cc_library_shared {
             cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib64\""],
             enabled: true,
         },
+        arm: {
+            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib\""],
+        },
+        arm64: {
+            cflags: ["-DVA_DRIVERS_PATH=\"/vendor/lib64\""],
+        },
     },
 
     vendor: true,
-    enabled: false,
 }
 
 cc_library_shared {
@@ -170,10 +169,4 @@ cc_library_shared {
     ],
 
     vendor: true,
-    enabled: false,
-    arch: {
-        x86_64: {
-            enabled: true,
-        },
-    },
 }
